@@ -4,17 +4,13 @@
 * - This code was written in an environment that could perfectly run Java
 * - You might access it in an environment that does not run Java
 * - Feel free to copy and paste the code to an environment that runs Java if you intend to test
-	- There is an accompanying interface that this class implements. Please make sure that you have the interface in place as well
+- There is an accompanying interface that this class implements. Please make sure that you have the interface in place as well
  */
 
 package DataStructure;
 
 import DataStructure.interfaces.CustomArrayListInterface;
 
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Objects;
 
 public class CustomArrayList<T> implements CustomArrayListInterface<T>{
 
@@ -100,6 +96,8 @@ public class CustomArrayList<T> implements CustomArrayListInterface<T>{
 
     public void reverse () {
 
+			// We would only loop half-way through the available elements
+			// We can as well say our revere would take O(nlogn)
         for (int i = 0; i < Math.round((float) this.length / 2); i++) {
             int max = this.length - i - 1;
             // keep a temporary reference to the element at the current maximum index using the formula(length - i - 1)
