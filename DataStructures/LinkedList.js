@@ -1,109 +1,110 @@
-class Node {
-  constructor(value) {
-    this.value = value
-    this.next = null
-  }
+export class Node {
+	constructor(value) {
+		this.value = value
+		this.next = null
+	}
 }
 
 
 class MyLinkedList {
-  constructor() {
-    this.length = 0
-    this.head = null
-  }
+	constructor() {
+		this.length = 0
+		this.head = null
+	}
 
-  /** 
-   * @param {number} index
-   * @return {number}
-   */
-  get(index) {
-    if (index >= this.length || index < 0) {
-      return -1;
-    } 
+	/** 
+	 * @param {number} index
+	 * @return {number}
+	 */
+	get(index) {
+		if (index >= this.length || index < 0) {
+			return -1;
+		}
 
-    let head = this.head
-    for (let i = 0; i < index; i++) {
-      head = head.next
-    }
+		let head = this.head
+		for (let i = 0; i < index; i++) {
+			head = head.next
+		}
 
-    return head?.value
+		return head?.value
 
-  }
-  /** 
-   * @param {number} val
-   * @return {void}
-   */
-  addAtHead(value) {
-    this.addAtIndex(0, value)
-  }
+	}
+	/** 
+	 * @param {number} val
+	 * @return {void}
+	 */
+	addAtHead(value) {
+		this.addAtIndex(0, value)
+	}
 
-  /** 
-   * @param {number} val
-   * @return {void}
-   */
-  addAtTail(value) {
-    this.addAtIndex(this.length, value)
-  }
-  /** 
-   * @param {number} index 
-   * @param {number} val
-   * @return {void}
-   */
-  addAtIndex(index, value) {
-    if (index > this.length || index < 0) {
-      return;
-    }    
-    const node = new Node(value)
-    this.length++
-
-
-    console.log(`index: ${index}`)
-    if (index === 0) {
-      node.next = this.head
-      this.head = node
-    } else {
-      let head = this.head
-      for (let i = 0; i < index - 1; i++) {
-        head = head.next
-      }
-
-      node.next = head.next
-      head.next = node
-    }
-
-    // console.log(this.length)
-  }
-  
-  /** 
-   * @param {number} index
-   * @return {void}
-   */
-  deleteAtIndex(index) {
-    if (index >= this.length || index < 0) {
-      return;
-    }
+	/** 
+	 * @param {number} val
+	 * @return {void}
+	 */
+	addAtTail(value) {
+		this.addAtIndex(this.length, value)
+	}
+	/** 
+	 * @param {number} index 
+	 * @param {number} val
+	 * @return {void}
+	 */
+	addAtIndex(index, value) {
+		if (index > this.length || index < 0) {
+			return;
+		}
+		const node = new Node(value)
+		this.length++
 
 
-    if (index === 0) {
-      this.head = this.head.next
-    } else {
-      let item = this.head
+		if (index === 0) {
+			node.next = this.head
+			this.head = node
+		} else {
+			let head = this.head
+			for (let i = 0; i < index - 1; i++) {
+				head = head.next
+			}
 
-      for (let i = 0; i < index - 1; i++) {
-        item = item.next
-      }
-      item.next = item.next?.next ?? null
-    }
+			node.next = head.next
+			head.next = node
+		}
 
-    this.length--
-    
-  }
+	}
 
-  validateIndex(index) {
-    if (index >= this.length || index < 0) {
-      return;
-    }
-  }
+
+	/** 
+	 * @param {number} index
+	 * @return {void}
+	 */
+	deleteAtIndex(index) {
+		if (index >= this.length || index < 0) {
+			return;
+		}
+
+
+		if (index === 0) {
+			this.head = this.head.next
+		} else {
+			let item = this.head
+
+			for (let i = 0; i < index - 1; i++) {
+				item = item.next
+			}
+			item.next = item.next?.next ?? null
+		}
+
+		this.length--
+
+	}
+
+	print() {
+			let head = this.head
+			for (let i = 0; i < this.length; i++) {
+				console.log(head.value)
+				head = head.next
+			}
+	}
 }
 
 
@@ -118,7 +119,7 @@ class MyLinkedList {
  * obj.deleteAtIndex(index)
  */
 
-var obj = new MyLinkedList();
+// var obj = new MyLinkedList();
 // obj.addAtHead(3)
 // obj.addAtHead(9)
 // obj.addAtHead(5)
@@ -145,23 +146,23 @@ var obj = new MyLinkedList();
 // console.log(obj.get(7))
 // console.log(obj.get(8))
 
-obj.addAtHead(2)
-obj.deleteAtIndex(1)
-obj.addAtHead(2)
-obj.addAtHead(7)
-obj.addAtHead(3)
-obj.addAtHead(2)
-obj.addAtHead(5)
+// obj.addAtHead(2)
+// obj.deleteAtIndex(1)
+// obj.addAtHead(2)
+// obj.addAtHead(7)
+// obj.addAtHead(3)
+// obj.addAtHead(2)
+// obj.addAtHead(5)
 
 
-obj.addAtTail(5)
-console.log(obj.get(0))
-console.log(obj.get(1))
-console.log(obj.get(2))
-console.log(obj.get(3))
-console.log(obj.get(4))
-console.log(obj.get(5))
-console.log(obj.get(6))
+// obj.addAtTail(5)
+// console.log(obj.get(0))
+// console.log(obj.get(1))
+// console.log(obj.get(2))
+// console.log(obj.get(3))
+// console.log(obj.get(4))
+// console.log(obj.get(5))
+// console.log(obj.get(6))
 
 
 // console.log(obj.get(2))
@@ -186,4 +187,5 @@ console.log(obj.get(6))
 // console.log(obj.get(1))
 // console.log(obj.get(2))
 
-      // console.log(undefined ?? null)
+
+export default MyLinkedList
