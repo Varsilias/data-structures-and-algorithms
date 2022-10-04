@@ -1,8 +1,8 @@
 /*
 	@author - Daniel Okoronkwo
- 	This is an implementation of 0-indexed based
+		This is an implementation of 0-indexed based
 	DoublyLinkedList Feel free to play around with the
- 	implementation as well as the code
+		implementation as well as the code
 */
 
 class Node {
@@ -27,7 +27,7 @@ class DoublyLinkedList {
 	addLast(value) {
 		this.addAtPositon(this.length, value)
 	}
-	
+
 	addAtPositon(index, value) {
 		if (index > this.length || index < 0) {
 			throw new Error("No such index")
@@ -36,7 +36,7 @@ class DoublyLinkedList {
 		let node = new Node(value);
 
 		this.length++
-		
+
 		if (index === 0) {
 			// If we are adding at head but there is no head at
 			// the moment
@@ -57,12 +57,12 @@ class DoublyLinkedList {
 		for (let i = 0; i < index - 1; i++) {
 			head = head.next
 		}
-		
+
 
 		let ref = head.next;
 		// if ref is undefined or null we can assume that
 		// we are at the end of the list
-		if(!ref) {
+		if (!ref) {
 			node.next = ref
 			node.prev = head
 			head.next = node
@@ -81,12 +81,12 @@ class DoublyLinkedList {
 
 		let head = this.head;
 
-		if(!head) {
+		if (!head) {
 			throw new Error("List is empty")
 		}
-		
+
 		// if the head is the only element
-		if(head.next === null) {
+		if (head.next === null) {
 			this.head = null;
 			this.tail = null;
 			this.length--
@@ -100,17 +100,17 @@ class DoublyLinkedList {
 		this.length--
 
 		return head.value
-		
+
 	}
 
 	removeLast() {
 		let tail = this.tail;
-		if(!tail) {
+		if (!tail) {
 			throw new Error("List is empty")
 		}
-		
+
 		// if the tail is the only element
-		if(tail.prev === null) {
+		if (tail.prev === null) {
 			this.head = null;
 			this.tail = null;
 			this.length--
@@ -130,17 +130,17 @@ class DoublyLinkedList {
 			throw new Error("No such index")
 		}
 
-		if(index === 0) {
+		if (index === 0) {
 			return this.removeFirst()
 		}
 
-	  if(index === this.length - 1) {
+		if (index === this.length - 1) {
 			return this.removeLast()
 		}
 
 		let head = this.head;
 
-		for(let i = 0; i < index - 1; i++) {
+		for (let i = 0; i < index - 1; i++) {
 			head = head.next
 		}
 
@@ -150,17 +150,17 @@ class DoublyLinkedList {
 		head.next = nextRef
 		this.length--;
 		return ref.value
-		
+
 	}
 
 	peek() {
-		if(!this.head) {
+		if (!this.head) {
 			return null
 		}
 
 		return this.head.value
 	}
-	
+
 	printValues() {
 		let head = this.head;
 		for (let i = 0; i < this.length; i++) {
