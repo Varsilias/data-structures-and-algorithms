@@ -6,7 +6,7 @@ export class Node {
 }
 
 
-class MyLinkedList {
+class SinglyLinkedList {
 	constructor() {
 		this.length = 0
 		this.head = null
@@ -110,8 +110,8 @@ class MyLinkedList {
 
 
 /**
- * Your MyLinkedList object will be instantiated and called as such:
- * var obj = new MyLinkedList()
+ * Your SinglyLinkedList object will be instantiated and called as such:
+ * var obj = new SinglyLinkedList()
  * var param_1 = obj.get(index)
  * obj.addAtHead(val)
  * obj.addAtTail(val)
@@ -188,4 +188,4 @@ class MyLinkedList {
 // console.log(obj.get(2))
 
 
-export default MyLinkedList
+export default SinglyLinkedList
