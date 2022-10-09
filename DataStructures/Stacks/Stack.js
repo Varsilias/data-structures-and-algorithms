@@ -1,3 +1,12 @@
+/*
+	@author - Daniel Okoronkwo
+		This is an implementation of a Stack Data Structure both from
+		Scratch and using a DoublyLinkedList
+*/
+
+import DoublyLinkedList from "../LinkedLists/DoublyLinkedList.js"
+
+
 class Node {
 	constructor(value) {
 		this.value = value;
@@ -5,6 +14,7 @@ class Node {
 	}
 }
 
+// Stack Implemented from Scratch
 class Stack {
 	constructor() {
 		this.length = 0
@@ -16,15 +26,16 @@ class Stack {
 		
 		const node = new Node(value)
 		this.length++
-		
+
+		// If there is no head we set the new node to be the head
 		if(!this.head) {
 			node.next = this.head
 			this.head = node
 			return
 		}
 
-		// if there is a head and a tail we assign a node to the
-		// tail
+		// if there is a head we point the new node's next pointer
+		// to the current head and reassign head
 		node.next = this.head;
 		this.head = node
 		
@@ -60,15 +71,46 @@ class Stack {
 	}
 }
 
+/*
+Stack Implemented with DoublyLinkedList
+*/
+class DllStack {
+	constructor() {
+		this.linkedlist = new DoublyLinkedList()
+	}
+
+	push(value) {
+		return this.linkedlist.addFirst(value)
+	}
+
+	pop() {
+		return this.linkedlist.removeLast()
+	}
+
+	peek() {
+		return this.linkedlist.tail
+
+	}
+
+	length() {
+		return this.linkedlist.length
+	}
+}
+
 const s = new Stack()
 s.push(77)
 s.push(50)
 s.push(64)
 
-console.log(s.pop())
+for (let i = 0; i < 3; i++) {
+	console.log(s.peek())
+	console.log(s.pop())
 
-let lastVal = s.peek()
-// s.print()
+}
+// console.log(s.pop())
 
-console.log(lastVal)
-console.log(s.length)
+// let lastVal = s.peek()
+// // s.print()
+
+// console.log(lastVal)
+// console.log(s.length)

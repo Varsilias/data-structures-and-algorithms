@@ -174,20 +174,24 @@ class DoublyLinkedList {
 	}
 }
 
-let dll = new DoublyLinkedList();
+// let dll = new DoublyLinkedList();
 
-dll.addFirst(5)
-dll.addFirst(100)
-dll.addFirst(32)
-dll.addAtPositon(2, 456)
-dll.addLast(2000)
+// dll.addFirst(5)
+// dll.addFirst(100)
+// dll.addFirst(32)
+// dll.addAtPositon(2, 456)
+// dll.addLast(2000)
 
-console.log(dll.removeAtPostion(3))
-console.log(dll.removeAtPostion(3))
+// console.log(dll.removeAtPostion(3))
+// console.log(dll.removeAtPostion(3))
+
+			
 // console.log(dll.removeAtPostion(1))
 // console.log(dll.removeFirst())
 
 // console.log(dll.peek())
 // console.log(dll.tail)
 // console.log(dll.head)
-dll.printValues()
+// dll.printValues()
+
+export default DoublyLinkedList 
