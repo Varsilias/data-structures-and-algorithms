@@ -6,37 +6,37 @@
 
 function removeNthNode(head, n) {
 	let c = 0
-    let h = head
-    
-    if(!h.next) {
-        h = head.next
-        return h
-    }
-    
-    while(h) {
-        c++
-        h = h.next;
-    }
-    
-    
-    
-    let indexToRemove = c - n
-    
-    if(indexToRemove === 0) {
-        h = head.next
-        return h
-    }
-    
-    let curr = head
-    let prev;
-    
-    for(let i = 0; i < indexToRemove; i++) {
-        prev = curr;
-        curr = curr.next;
-    }
-    
-    prev.next = curr.next
-    return head
+	let h = head
+	
+	if(!h.next) {
+			h = head.next
+			return h
+	}
+	
+	while(h) {
+			c++
+			h = h.next;
+	}
+	
+	
+	
+	let indexToRemove = c - n
+	
+	if(indexToRemove === 0) {
+			h = head.next
+			return h
+	}
+	
+	let curr = head
+	let prev;
+	
+	for(let i = 0; i < indexToRemove; i++) {
+			prev = curr;
+			curr = curr.next;
+	}
+	
+	prev.next = curr.next
+	return head
     
 }
 
