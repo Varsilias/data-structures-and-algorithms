@@ -3,7 +3,7 @@
 
 
 
-import SLL from "./DataStructures/LinkedLists/SinglyLinkedList.js"
+import SLL from "../DataStructures/LinkedLists/SinglyLinkedList.js"
 
 class ListNode {
 	constructor(value, next) {
@@ -12,23 +12,27 @@ class ListNode {
 	}
 }
 function removeElements(head, val) {
+
+	// set a new dummy node that points to the head
 	let newNode = new ListNode();
 	newNode.next = head
 	let start = head;
 	let prev = newNode;	
 
+	// start the traversal and removal using the condition stated in the problem
 	while (start) {
-		if (start.value === val) {		
+		if (start.value === val) {					
 			prev.next = start.next	
 		} else {
 			prev = start
 		}
-		
-		start = start?.next
-	}
-	return newNode.next
-}
 
+	}
+
+	// by the end, we should be done remove the "unwanted" nodes in memory
+	// the dummy node still points to the same list but a modified version
+	// of the list. We then return the dummy node's next pointer
+	return newNode.next}
 
 let list = new SLL();
 let list1 = new SLL()
@@ -47,5 +51,5 @@ for (let i = 0; i < head.length; i++) {
 // console.log(list1.head, list)
 
 console.log(removeElements(list.head, 6))
-console.log(removeElements(list1.head, 7))
+// console.log(removeElements(list1.head, 7))
 

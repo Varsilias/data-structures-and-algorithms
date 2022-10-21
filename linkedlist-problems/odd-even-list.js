@@ -6,7 +6,8 @@
 
 // You must solve the problem in O(1) extra space complexity and O(n) time complexity.
 
-import SLL from "./DataStructures/LinkedLists/SinglyLinkedList.js"
+import SLL from "../DataStructures/LinkedLists/SinglyLinkedList.js"
+
 
 class ListNode {
 	constructor(value, next) {
@@ -15,6 +16,7 @@ class ListNode {
 	}
 }
 
+// Approach One
 function oddEvenList(head) {
 	if(head === null) return head;
 
@@ -32,27 +34,53 @@ function oddEvenList(head) {
 
 	let n = 0
 
-	// while (head) {
-	// 	n++
-	// 	head = head.next
+	// count the number of nodes available (n)
+	while (head) {
+		n++
+		head = head.next
+	}
+
+ 	// walk through the list in n/2 Math.round() takes care of floating
+	// point number
+	for (let i = 0; i < Math.round(n/2); i++) {
+		// console.log(odd.value, even?.value)
+		prevOdd.next = odd;
+		prevEven.next = even
+
+		prevOdd = prevOdd.next;
+		prevEven = prevEven.next
+		odd = odd?.next?.next;
+		even = even?.next?.next;
+
+		if (!even?.value) {
+			prevOdd.next = newNode1.next		
+		}
+	}
+
+	// for visualization
+	// while (newNode) {
+	// 	console.log(newNode.value)
+	// 	newNode = newNode.next
 	// }
+	
+	return newNode.next
+}
 
-	// // console.log(n)
+// Approach Two
+function oddEvenList(head) {
+	if(head === null) return head;
 
-	// for (let i = 0; i < Math.round(n/2); i++) {
-	// 	// console.log(odd.value, even?.value)
-	// 	prevOdd.next = odd;
-	// 	prevEven.next = even
+	let odd = head;
+	let even = head.next
 
-	// 	prevOdd = prevOdd.next;
-	// 	prevEven = prevEven.next
-	// 	odd = odd?.next?.next;
-	// 	even = even?.next?.next;
+	let newNode = new ListNode();
+	newNode.next = head
 
-	// 	if (!even?.value) {
-	// 		prevOdd.next = newNode1.next		
-	// 	}
-	// }
+	let newNode1 = new ListNode();
+	newNode.next = head.next
+
+	let prevOdd = newNode;
+	let prevEven = newNode1;
 	
 
 	while (odd) {
@@ -69,14 +97,14 @@ function oddEvenList(head) {
 		}
 	}
 
-	while (newNode) {
-		console.log(newNode.value)
-		newNode = newNode.next
-	}
+	// for visualization
+	// while (newNode) {
+	// 	console.log(newNode.value)
+	// 	newNode = newNode.next
+	// }
 	
-	// console.log(newNode)
-	// console.log(newNode1.next)
-	// return newNode.next
+
+	return newNode.next
 }
 
 let list = new SLL();
