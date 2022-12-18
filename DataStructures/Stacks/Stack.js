@@ -23,12 +23,12 @@ class Stack {
 	}
 
 	push(value) {
-		
+
 		const node = new Node(value)
 		this.length++
 
 		// If there is no head we set the new node to be the head
-		if(!this.head) {
+		if (!this.head) {
 			node.next = this.head
 			this.head = node
 			return
@@ -38,13 +38,13 @@ class Stack {
 		// to the current head and reassign head
 		node.next = this.head;
 		this.head = node
-		
+
 	}
 
 	pop() {
 		let nodeToRemove = this.head
 		this.length--
-		if(!nodeToRemove) {
+		if (!nodeToRemove) {
 			return null
 		}
 		this.head = this.head.next
@@ -52,7 +52,7 @@ class Stack {
 	}
 
 	peek() {
-		if(!this.head) {
+		if (!this.head) {
 			return null;
 		}
 
@@ -61,8 +61,8 @@ class Stack {
 
 	print() {
 		let head = this.head;
-		for(let i = 0; i < this.length; i++) {
-			
+		for (let i = 0; i < this.length; i++) {
+
 			console.log(head.value)
 			console.log(`Node ${head.value}'s next value: ${head?.next?.value}`)
 			head = head.next

@@ -9,7 +9,7 @@ import DoublyLinkedList from "../LinkedLists/DoublyLinkedList.js"
 class Node {
 	constructor(value) {
 		this.value = value
-		this.next= null
+		this.next = null
 	}
 }
 
@@ -23,15 +23,15 @@ class Queue {
 
 		// **this.tail** keeps track of the next element to be dequeued
 		this.tail = null
-		
+
 		this.length = 0
 	}
 
 	enqueue(value) {
-		
+
 		const node = new Node(value)
 		this.length++
-		
+
 		if (!this.head) {
 			node.next = this.head
 			this.head = node
@@ -80,16 +80,16 @@ class Queue {
 
 	print() {
 		let head = this.head;
-		for(let i = 0; i < this.length; i++) {
-			
+		for (let i = 0; i < this.length; i++) {
+
 			console.log(head.value)
 			console.log(`Node ${head.value}'s next value: ${head?.next?.value}`)
 			head = head.next
 		}
 		console.log(`Length of Queue is: ${this.length}`)
 	}
-	
- }
+
+}
 
 
 // Queue Implementation using a DoublyLinkedList
@@ -116,8 +116,8 @@ class DllQueue {
 
 	print() {
 		let head = this.linkedlist.head;
-		for(let i = 0; i < this.linkedlist.length; i++) {
-			
+		for (let i = 0; i < this.linkedlist.length; i++) {
+
 			console.log(head.value)
 			console.log(`Node ${head.value}'s next value: ${head?.next?.value}`)
 			head = head.next

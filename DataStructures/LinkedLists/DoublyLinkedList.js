@@ -185,7 +185,7 @@ class DoublyLinkedList {
 // console.log(dll.removeAtPostion(3))
 // console.log(dll.removeAtPostion(3))
 
-			
+
 // console.log(dll.removeAtPostion(1))
 // console.log(dll.removeFirst())
 
@@ -194,4 +194,4 @@ class DoublyLinkedList {
 // console.log(dll.head)
 // dll.printValues()
 
-export default DoublyLinkedList 
+export default DoublyLinkedList

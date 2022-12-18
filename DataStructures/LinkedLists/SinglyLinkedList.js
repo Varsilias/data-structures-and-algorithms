@@ -99,11 +99,11 @@ class SinglyLinkedList {
 	}
 
 	print() {
-			let head = this.head
-			for (let i = 0; i < this.length; i++) {
-				console.log(head.value)
-				head = head.next
-			}
+		let head = this.head
+		for (let i = 0; i < this.length; i++) {
+			console.log(head.value)
+			head = head.next
+		}
 	}
 }
 
