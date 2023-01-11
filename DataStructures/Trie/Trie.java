@@ -4,6 +4,8 @@ class TrieNode {
 	public static final int N = 26;
 	public TrieNode[] children = new TrieNode[26];
 	public boolean isEndOfWord = false;
+	public int noOfVisits = 0;
+
 }
 
 class Trie {
@@ -73,6 +75,30 @@ class Trie {
 
 		return true;
 	}
+
+	public int startsWithCount(String prefix) {
+		return prefixWordCount(root, prefix);
+	}
+
+	private int prefixWordCount(TrieNode root, String prefix) {
+		
+		for(int i = 0; i < prefix.length(); i++) {
+			char c = prefix.charAt(i);
+			int index = c - 'a';
+
+			TrieNode child = root.children[index];
+
+			if(child == null) {
+				return 0;
+			}
+
+			root = root.children[index];
+			
+		}
+
+		return root.noOfVisits;
+	}
+	
 }
 
 public class Main {
@@ -91,6 +117,9 @@ public class Main {
 
 		System.out.println(trie.startsWith("be")); // true
 
+		
+		System.out.println(trie.startsWithCount("be")); // 2
+		System.out.println(trie.startsWithCount("ap")); // 2
 
 		// System.out.println();
 	}
