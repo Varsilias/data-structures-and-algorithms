@@ -31,6 +31,7 @@ class Trie {
 			}
 
 			root = root.children[index];
+			root.noOfVisits++;
 		}
 
 		root.isEndOfWord = true;
