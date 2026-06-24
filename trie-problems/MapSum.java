@@ -8,10 +8,7 @@ class TrieNode {
 	public int value = 0;
 }
 
-
 class MapSum {
-	
-	
 
 	TrieNode root;
 
@@ -42,7 +39,6 @@ class MapSum {
 		TrieNode curr = this.root;
 
 		for (char c : prefix.toCharArray()) {
-			int index = c;
 			TrieNode next = curr.children.get(c);
 
 			if (next == null) {
@@ -54,30 +50,29 @@ class MapSum {
 		}
 
 		return getSum(curr);
-		
+
 	}
 
 	private int getSum(TrieNode curr) {
 		int sum = 0;
-	
-		for(char key : curr.children.keySet()) {
+
+		for (char key : curr.children.keySet()) {
 			sum += getSum(curr.children.get(key));
 		}
 
 		return sum + curr.value;
 	}
-	
+
 }
 
-public class Main {
-	public static void main(String args[]) {
-		MapSum mapSum = new MapSum();
-		mapSum.insert("apple", 3);
-		// mapSum.sum("ap");
+// public class Main {
+// public static void main(String args[]) {
+// MapSum mapSum = new MapSum();
+// mapSum.insert("apple", 3);
+// // mapSum.sum("ap");
 
-		
-		System.out.println(mapSum.sum("ap")); // return 3 (apple = 3)
-		mapSum.insert("app", 2);
-		System.out.println(mapSum.sum("ap")); // return 5
-	}
-}
+// System.out.println(mapSum.sum("ap")); // return 3 (apple = 3)
+// mapSum.insert("app", 2);
+// System.out.println(mapSum.sum("ap")); // return 5
+// }
+// }

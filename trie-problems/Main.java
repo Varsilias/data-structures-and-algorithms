@@ -17,7 +17,6 @@ class Solution {
 				}
 			}
 		}
-		
 
 		StringBuffer str = new StringBuffer();
 		for (int i = 0; i < words.length; i++) { // O(n)
@@ -25,14 +24,11 @@ class Solution {
 
 			str.append(words[i]);
 
-			 
-
-			if(i != (words.length - 1)) {
+			if (i != (words.length - 1)) {
 				str.append(" ");
 			}
 
 		}
-
 
 		return str.toString(); // O(n) + O(n * m) + O(n) = O(n * m)
 	}
