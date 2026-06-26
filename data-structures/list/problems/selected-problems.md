@@ -1,11 +1,11 @@
 # List Problems
 
 Easy:
-1. LeetCode 27: Remove Element
-2. LeetCode 26: Remove Duplicates from Sorted Array
-3. LeetCode 88: Merge Sorted Array
-4. LeetCode 283: Move Zeroes
-5. LeetCode 977: Squares of a Sorted Array
+1. LeetCode 27: Remove Element - (ts)
+2. LeetCode 26: Remove Duplicates from Sorted Array - (ts)
+3. LeetCode 88: Merge Sorted Array - (ts)
+4. LeetCode 283: Move Zeroes - (ts)
+5. LeetCode 977: Squares of a Sorted Array - (ts)
 
 Medium:
 6. LeetCode 80: Remove Duplicates from Sorted Array II
@@ -20,3 +20,4 @@ Rhythm:
 - solve the easy set in the same language order as your implementation
 - do one medium only after all easy questions feel routine
 - do one hard after each medium pair, not all at once
+
