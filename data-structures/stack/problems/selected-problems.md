@@ -17,5 +17,7 @@ Hard:
 10. LeetCode 85: Maximal Rectangle
 
 Rhythm:
-- start with parenthesis and duplicate-removal problems to make push-pop automatic
-- move to monotonic-stack problems only after LIFO reasoning feels boring
+- solve one problem at a time in this language order: TypeScript, Go, Java
+- finish a problem in all three languages before moving to the next problem number
+- complete all 5 easy problems before starting the medium set
+- only move to the harder monotonic-stack problems after the simple push-pop problems feel routine

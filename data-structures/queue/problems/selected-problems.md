@@ -17,5 +17,7 @@ Hard:
 10. LeetCode 862: Shortest Subarray with Sum at Least K
 
 Rhythm:
-- start with plain FIFO simulation before touching BFS-style queue problems
-- treat sliding window deque work as queue-adjacent only after FIFO is automatic
+- solve one problem at a time in this language order: TypeScript, Go, Java
+- finish a problem in all three languages before moving to the next problem number
+- complete all 5 easy problems before starting the medium set
+- keep FIFO simulation problems first, then move to BFS-style and deque-adjacent problems

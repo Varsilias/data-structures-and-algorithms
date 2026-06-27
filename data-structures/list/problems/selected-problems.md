@@ -17,7 +17,7 @@ Hard:
 10. LeetCode 41: First Missing Positive
 
 Rhythm:
-- solve the easy set in the same language order as your implementation
-- do one medium only after all easy questions feel routine
-- do one hard after each medium pair, not all at once
-
+- solve one problem at a time in this language order: TypeScript, Go, Java
+- finish a problem in all three languages before moving to the next problem number
+- complete all 5 easy problems before starting the medium set
+- complete all 3 medium problems before starting the hard set

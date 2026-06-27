@@ -17,7 +17,7 @@ function sortedSquares1(nums: number[]): number[] {
     let right = n - 1
     let left = 0;
 
-    let p = n - 1 // this determines where in the new array elements are added goes
+    let p = n - 1 // this determines where in the new array elements are added
 
 
     while(right >= left) {
