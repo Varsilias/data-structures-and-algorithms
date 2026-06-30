@@ -1,3 +1,5 @@
+package problems
+
 func sortedSquares(nums []int) []int { // [-4,-1,0,3,10]
 	n := len(nums)
 	res := make([]int, n)
