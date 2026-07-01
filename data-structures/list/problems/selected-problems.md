@@ -1,15 +1,15 @@
 # List Problems
 
 Easy:
-1. LeetCode 27: Remove Element - (ts)
-2. LeetCode 26: Remove Duplicates from Sorted Array - (ts)
-3. LeetCode 88: Merge Sorted Array - (ts)
-4. LeetCode 283: Move Zeroes - (ts)
-5. LeetCode 977: Squares of a Sorted Array - (ts)
+1. LeetCode 27: Remove Element - (ts, go, java)
+2. LeetCode 26: Remove Duplicates from Sorted Array - (ts, go, java)
+3. LeetCode 88: Merge Sorted Array - (ts, go, java)
+4. LeetCode 283: Move Zeroes - (ts, go, java)
+5. LeetCode 977: Squares of a Sorted Array - (ts, go, java)
 
 Medium:
-6. LeetCode 80: Remove Duplicates from Sorted Array II
-7. LeetCode 238: Product of Array Except Self
+6. LeetCode 80: Remove Duplicates from Sorted Array II - (ts, go, java)
+7. LeetCode 238: Product of Array Except Self - (ts)
 8. LeetCode 560: Subarray Sum Equals K
 
 Hard:
