@@ -9,7 +9,7 @@ Easy:
 
 Medium:
 6. LeetCode 80: Remove Duplicates from Sorted Array II - (ts, go, java)
-7. LeetCode 238: Product of Array Except Self - (ts)
+7. LeetCode 238: Product of Array Except Self - (ts, go, java)
 8. LeetCode 560: Subarray Sum Equals K
 
 Hard:

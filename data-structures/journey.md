@@ -4,6 +4,8 @@ Current tracks:
 - `list` using an `ArrayList`
 - `stack` using an array-backed `Stack`
 - `queue` using an array-backed `Queue`
+- `ring-buffer` using a fixed-capacity circular buffer (rejects `enqueue` when full — LeetCode 622's contract)
+- `dynamic-ring-buffer` using a circular buffer that grows when full instead of rejecting
 
 Daily loop:
 1. Run `make doctor`.
