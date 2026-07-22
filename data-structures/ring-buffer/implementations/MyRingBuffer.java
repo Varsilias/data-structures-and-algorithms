@@ -1,5 +1,9 @@
 public class MyRingBuffer<T> implements MyRingBufferContract<T> {
     private final int initialCapacity;
+    private int head;
+    private int tail;
+    private int currentLength;
+    private T[] container;
 
     public MyRingBuffer() {
         this(4);
@@ -11,56 +15,88 @@ public class MyRingBuffer<T> implements MyRingBufferContract<T> {
         }
 
         this.initialCapacity = initialCapacity;
+        this.container = (T[]) new Object[initialCapacity];
+        this.currentLength = 0;
+        this.head = 0;
+        this.tail = 0;
     }
 
     @Override
     public int length() {
-        throw new UnsupportedOperationException("TODO: implement length");
+        return this.currentLength;
     }
 
     @Override
     public int capacity() {
-        throw new UnsupportedOperationException("TODO: implement capacity");
+        return this.initialCapacity;
     }
 
     @Override
     public boolean isEmpty() {
-        throw new UnsupportedOperationException("TODO: implement isEmpty");
+        return this.length() <= 0;
     }
 
     @Override
     public boolean isFull() {
-        throw new UnsupportedOperationException("TODO: implement isFull");
+        return this.length() == this.capacity();
     }
 
     @Override
     public T front() {
-        throw new UnsupportedOperationException("TODO: implement front");
+        if (this.isEmpty())
+            return null;
+        return this.container[this.head];
     }
 
     @Override
     public T rear() {
-        throw new UnsupportedOperationException("TODO: implement rear");
+        if (this.isEmpty())
+            return null;
+
+        int idx = (this.tail - 1 + this.capacity()) % this.capacity();
+        return this.container[idx];
     }
 
     @Override
     public boolean enqueue(T value) {
-        throw new UnsupportedOperationException("TODO: implement enqueue");
+        if (this.isFull())
+            return false;
+
+        this.container[this.tail] = value;
+        this.currentLength++;
+        this.tail = (this.tail + 1) % this.capacity();
+        return true;
     }
 
     @Override
     public T dequeue() {
-        throw new UnsupportedOperationException("TODO: implement dequeue");
+        if (this.isEmpty())
+            return null;
+
+        T val = this.container[this.head];
+        this.head = (this.head + 1) % this.capacity();
+        this.currentLength--;
+        return val;
     }
 
     @Override
     public void clear() {
-        throw new UnsupportedOperationException("TODO: implement clear");
+        this.container = null;
+        this.currentLength = 0;
+        this.head = 0;
+        this.tail = 0;
     }
 
     @Override
     public Object[] toArray() {
-        throw new UnsupportedOperationException("TODO: implement toArray");
+        T[] result = (T[]) new Object[this.length()];
+
+        for (int i = 0; i < this.length(); i++) {
+            int idx = (this.head + i) % this.capacity();
+            result[i] = this.container[idx];
+        }
+
+        return result;
     }
 
     public int initialCapacity() {
