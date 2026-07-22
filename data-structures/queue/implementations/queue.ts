@@ -63,6 +63,9 @@ export class MyQueue<T> implements Queue<T> {
   public clear(): void {
     this.container = new Array(this.initialCapacity);
     this.currentLength = 0
+    this.front = 0
+    this.back = 0
+    this.currentCapacity = this.getInitialCapacity()
   }
 
   public toArray(): T[] {
