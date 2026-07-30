@@ -4,6 +4,9 @@ import "dsa/data-structures/stack/interfaces"
 
 type MyStack[T any] struct {
 	initialCapacity int
+	currentCapacity int
+	currentLength   int
+	container       []T
 }
 
 var _ interfaces.Stack[int] = (*MyStack[int])(nil)
@@ -15,41 +18,82 @@ func NewMyStack[T any](initialCapacity int) *MyStack[T] {
 
 	return &MyStack[T]{
 		initialCapacity: initialCapacity,
+		currentCapacity: initialCapacity,
+		currentLength:   0,
+		container:       make([]T, initialCapacity),
 	}
 }
 
 func (s *MyStack[T]) Length() int {
-	panic("TODO: implement Length")
+	return s.currentLength
 }
 
 func (s *MyStack[T]) Capacity() int {
-	panic("TODO: implement Capacity")
+	return s.currentCapacity
 }
 
 func (s *MyStack[T]) IsEmpty() bool {
-	panic("TODO: implement IsEmpty")
+	return s.Length() <= 0
 }
 
 func (s *MyStack[T]) Peek() T {
-	panic("TODO: implement Peek")
+	if s.IsEmpty() {
+		panic("peek: stack is empty")
+	}
+
+	return s.container[s.currentLength-1]
 }
 
 func (s *MyStack[T]) Push(value T) {
-	panic("TODO: implement Push")
+	s.ensureCapacity()
+	s.container[s.currentLength] = value
+	s.currentLength++
 }
 
 func (s *MyStack[T]) Pop() T {
-	panic("TODO: implement Pop")
+	if s.IsEmpty() {
+		panic("pop: stack is empty")
+	}
+
+	val := s.container[s.currentLength-1]
+
+	s.currentLength--
+	return val
 }
 
 func (s *MyStack[T]) Clear() {
-	panic("TODO: implement Clear")
+	s.currentLength = 0
+	s.currentCapacity = s.initialCapacity
+	s.container = make([]T, 0, s.initialCapacity)
 }
 
 func (s *MyStack[T]) ToSlice() []T {
-	panic("TODO: implement ToSlice")
+	n := s.Length()
+	res := make([]T, n)
+
+	for i := 0; i < n; i++ {
+		res[i] = s.container[i]
+	}
+
+	return res
 }
 
 func (s *MyStack[T]) InitialCapacity() int {
 	return s.initialCapacity
+}
+
+func (s *MyStack[T]) ensureCapacity() {
+	if s.Length() < s.Capacity() {
+		return
+	}
+
+	capacity := s.currentCapacity * 2
+	container := make([]T, capacity)
+
+	for i := 0; i < s.Length(); i++ {
+		container[i] = s.container[i]
+	}
+
+	s.currentCapacity = capacity
+	s.container = container
 }

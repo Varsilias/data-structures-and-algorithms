@@ -2,6 +2,10 @@ import { Stack } from "../interfaces/stack";
 
 export class MyStack<T> implements Stack<T> {
   private readonly initialCapacity: number;
+  private container: Array<T>
+  private currentLength: number
+  private currentCapacity: number
+  private head: number
 
   public constructor(initialCapacity = 4) {
     if (initialCapacity <= 0) {
@@ -9,41 +13,81 @@ export class MyStack<T> implements Stack<T> {
     }
 
     this.initialCapacity = initialCapacity;
+    this.container = new Array(initialCapacity)
+    this.currentLength = 0;
+    this.head = 0
+    this.currentCapacity = initialCapacity
   }
 
   public length(): number {
-    throw new Error("TODO: implement length");
+    return this.currentLength
   }
 
   public capacity(): number {
-    throw new Error("TODO: implement capacity");
+    return this.currentCapacity
   }
 
   public isEmpty(): boolean {
-    throw new Error("TODO: implement isEmpty");
+    return this.length() <= 0;
   }
 
   public peek(): T | undefined {
-    throw new Error("TODO: implement peek");
+    return this.container[this.head-1]
   }
 
   public push(_value: T): void {
-    throw new Error("TODO: implement push");
+    this.ensureCapacity()
+    this.container[this.head] = _value;
+    this.head++
+    this.currentLength++
   }
 
   public pop(): T | undefined {
-    throw new Error("TODO: implement pop");
+    if(this.isEmpty()) return
+    const val = this.container[this.head - 1]
+    delete this.container[this.head - 1]
+    this.head--
+    this.currentLength--
+
+    return val
   }
 
   public clear(): void {
-    throw new Error("TODO: implement clear");
+    this.container = []
+    this.currentLength = 0;
+    this.head = 0
+    this.currentCapacity = this.initialCapacity
   }
 
   public toArray(): T[] {
-    throw new Error("TODO: implement toArray");
+    const res: T[] = []
+
+    for(let i = 0; i < this.length(); i++) {
+      res.push(this.container[i])
+    }
+
+    return res
   }
 
   protected getInitialCapacity(): number {
     return this.initialCapacity;
   }
+
+  private ensureCapacity() {
+    if(this.length() < this.capacity()) return
+
+    const newCapacity = this.currentCapacity * 2;
+    const newContainer = new Array(newCapacity)
+
+    for(let i = this.head-1; i >= 0; i--) {
+      newContainer[i] = this.container[i]
+    }
+
+    this.container = newContainer
+    this.currentCapacity = newCapacity
+
+
+  }
 }
+
+

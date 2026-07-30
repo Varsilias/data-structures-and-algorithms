@@ -1,5 +1,9 @@
 public class MyStack<T> implements MyStackContract<T> {
     private final int initialCapacity;
+    private int currentCapacity;
+    private int currentLength;
+    private int head;
+    private T[] container;
 
     public MyStack() {
         this(4);
@@ -11,49 +15,89 @@ public class MyStack<T> implements MyStackContract<T> {
         }
 
         this.initialCapacity = initialCapacity;
+        this.currentCapacity = initialCapacity;
+        this.head = 0;
+        this.currentLength = 0;
+        this.container = (T[]) new Object[initialCapacity];
+
     }
 
     @Override
     public int length() {
-        throw new UnsupportedOperationException("TODO: implement length");
+        return currentLength;
     }
 
     @Override
     public int capacity() {
-        throw new UnsupportedOperationException("TODO: implement capacity");
+        return currentCapacity;
     }
 
     @Override
     public boolean isEmpty() {
-        throw new UnsupportedOperationException("TODO: implement isEmpty");
+        return length() <= 0;
     }
 
     @Override
     public T peek() {
-        throw new UnsupportedOperationException("TODO: implement peek");
+        if (isEmpty())
+            return null;
+        return this.container[this.head - 1];
     }
 
     @Override
     public void push(T value) {
-        throw new UnsupportedOperationException("TODO: implement push");
+        this.ensureCapacity();
+        this.container[this.head] = value;
+        this.head++;
+        this.currentLength++;
     }
 
     @Override
     public T pop() {
-        throw new UnsupportedOperationException("TODO: implement pop");
+        if (isEmpty())
+            return null;
+        T val = this.container[this.head - 1];
+        this.container[this.head - 1] = null;
+        this.head--;
+        this.currentLength--;
+        return val;
     }
 
     @Override
     public void clear() {
-        throw new UnsupportedOperationException("TODO: implement clear");
+        this.currentCapacity = 0;
+        this.head = 0;
+        this.currentLength = 0;
+        this.container = (T[]) new Object[initialCapacity];
     }
 
     @Override
     public Object[] toArray() {
-        throw new UnsupportedOperationException("TODO: implement toArray");
+        Object[] res = new Object[this.length()];
+
+        for (int i = 0; i < this.length(); i++) {
+            res[i] = this.container[i];
+        }
+
+        return res;
     }
 
     public int initialCapacity() {
         return initialCapacity;
+    }
+
+    private void ensureCapacity() {
+        if (this.length() < this.capacity())
+            return;
+
+        int capacity = this.capacity() * 2;
+        T[] newContainer = (T[]) new Object[capacity];
+
+        for (int i = 0; i < this.length(); i++) {
+            newContainer[i] = this.container[i];
+        }
+        this.container = newContainer;
+        this.currentCapacity = capacity;
+
     }
 }
