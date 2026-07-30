@@ -1,11 +1,11 @@
 # Queue Problems
 
 Easy:
-1. LeetCode 933: Number of Recent Calls
-2. LeetCode 232: Implement Queue using Stacks
-3. LeetCode 346: Moving Average from Data Stream
-4. LeetCode 2073: Time Needed to Buy Tickets
-5. LeetCode 950: Reveal Cards In Increasing Order
+1. LeetCode 933: Number of Recent Calls - solved
+2. LeetCode 232: Implement Queue using Stacks - solved
+3. LeetCode 346: Moving Average from Data Stream - **premium**
+4. LeetCode 2073: Time Needed to Buy Tickets - solved
+5. LeetCode 950: Reveal Cards In Increasing Order - **medium**
 
 Medium:
 6. LeetCode 649: Dota2 Senate
