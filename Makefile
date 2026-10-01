@@ -6,7 +6,7 @@ TS_BUILD_DIR := .build/typescript
 JAVA_BUILD_DIR := .build/java
 TSC := ./node_modules/.bin/tsc
 
-.PHONY: help doctor list-status list-problems list-test list-test-ts list-test-go list-test-java stack-status stack-problems stack-test stack-test-ts stack-test-go stack-test-java queue-status queue-problems queue-test queue-test-ts queue-test-go queue-test-java ring-buffer-status ring-buffer-problems ring-buffer-test ring-buffer-test-ts ring-buffer-test-go ring-buffer-test-java dynamic-ring-buffer-status dynamic-ring-buffer-problems dynamic-ring-buffer-test dynamic-ring-buffer-test-ts dynamic-ring-buffer-test-go dynamic-ring-buffer-test-java list-clean
+.PHONY: help doctor list-status list-problems list-test list-test-ts list-test-go list-test-java stack-status stack-problems stack-test stack-test-ts stack-test-go stack-test-java queue-status queue-problems queue-test queue-test-ts queue-test-go queue-test-java ring-buffer-status ring-buffer-problems ring-buffer-test ring-buffer-test-ts ring-buffer-test-go ring-buffer-test-java dynamic-ring-buffer-status dynamic-ring-buffer-problems dynamic-ring-buffer-test dynamic-ring-buffer-test-ts dynamic-ring-buffer-test-go dynamic-ring-buffer-test-java linked-list-status linked-list-problems linked-list-test linked-list-test-ts linked-list-test-go linked-list-test-java hash-map-status hash-map-problems hash-map-test hash-map-test-ts hash-map-test-go hash-map-test-java tree-status tree-problems tree-test tree-test-ts tree-test-go tree-test-java heap-status heap-problems heap-test heap-test-ts heap-test-go heap-test-java graph-status graph-problems graph-test graph-test-ts graph-test-go graph-test-java trie-status trie-problems trie-test trie-test-ts trie-test-go trie-test-java list-clean
 
 help:
 	@echo "Available targets:"
@@ -41,6 +41,24 @@ help:
 	@echo "  make dynamic-ring-buffer-test-ts  Run the TypeScript Dynamic Ring Buffer test suite"
 	@echo "  make dynamic-ring-buffer-test-go  Run the Go Dynamic Ring Buffer test suite"
 	@echo "  make dynamic-ring-buffer-test-java Run the Java Dynamic Ring Buffer test suite"
+	@echo "  make linked-list-status   Show the Linked List track and next actions"
+	@echo "  make linked-list-problems Print the linked-list-focused problems"
+	@echo "  make linked-list-test     Run Linked List tests in TypeScript, Go, and Java"
+	@echo "  make hash-map-status      Show the Hash Map track and next actions"
+	@echo "  make hash-map-problems    Print the hash-map-focused problems"
+	@echo "  make hash-map-test        Run Hash Map tests in TypeScript, Go, and Java"
+	@echo "  make tree-status          Show the Binary Search Tree track and next actions"
+	@echo "  make tree-problems        Print the tree-focused problems"
+	@echo "  make tree-test            Run Binary Search Tree tests in TypeScript, Go, and Java"
+	@echo "  make heap-status          Show the Binary Min Heap track and next actions"
+	@echo "  make heap-problems        Print the heap-focused problems"
+	@echo "  make heap-test            Run Binary Min Heap tests in TypeScript, Go, and Java"
+	@echo "  make graph-status         Show the Graph track and next actions"
+	@echo "  make graph-problems       Print the graph-focused problems"
+	@echo "  make graph-test           Run Graph tests in TypeScript, Go, and Java"
+	@echo "  make trie-status          Show the Trie track and next actions"
+	@echo "  make trie-problems        Print the trie-focused problems"
+	@echo "  make trie-test            Run Trie tests in TypeScript, Go, and Java"
 	@echo "  make list-clean     Remove generated build output"
 
 doctor:
@@ -169,6 +187,150 @@ dynamic-ring-buffer-test-java: doctor
 	@mkdir -p "$(JAVA_BUILD_DIR)"
 	@javac -d "$(JAVA_BUILD_DIR)" $$(find data-structures/dynamic-ring-buffer -name '*.java' | sort)
 	@java -cp "$(JAVA_BUILD_DIR)" MyDynamicRingBufferTest
+
+linked-list-status:
+	@sed -n '1,220p' data-structures/journey.md
+	@printf "\n"
+	@sed -n '1,220p' data-structures/linked-list/IMPLEMENTATION_CHECKLIST.md
+
+linked-list-problems:
+	@sed -n '1,220p' data-structures/linked-list/problems/selected-problems.md
+
+linked-list-test: linked-list-test-ts linked-list-test-go linked-list-test-java
+
+linked-list-test-ts: doctor
+	@mkdir -p "$(TS_BUILD_DIR)"
+	@"$(TSC)" --project "$(TS_CONFIG)" --outDir "$(TS_BUILD_DIR)"
+	@node "$(TS_BUILD_DIR)/linked-list/tests/linked-list.test.js"
+
+linked-list-test-go: doctor
+	@mkdir -p "$(ROOT)/.build/go-cache" "$(ROOT)/.build/go-tmp"
+	@GOCACHE="$(ROOT)/.build/go-cache" GOTMPDIR="$(ROOT)/.build/go-tmp" go test ./data-structures/linked-list/tests -v
+
+linked-list-test-java: doctor
+	@mkdir -p "$(JAVA_BUILD_DIR)"
+	@javac -d "$(JAVA_BUILD_DIR)" $$(find data-structures/linked-list -name '*.java' | sort)
+	@java -cp "$(JAVA_BUILD_DIR)" MyLinkedListTest
+
+hash-map-status:
+	@sed -n '1,220p' data-structures/journey.md
+	@printf "\n"
+	@sed -n '1,220p' data-structures/hash-map/IMPLEMENTATION_CHECKLIST.md
+
+hash-map-problems:
+	@sed -n '1,220p' data-structures/hash-map/problems/selected-problems.md
+
+hash-map-test: hash-map-test-ts hash-map-test-go hash-map-test-java
+
+hash-map-test-ts: doctor
+	@mkdir -p "$(TS_BUILD_DIR)"
+	@"$(TSC)" --project "$(TS_CONFIG)" --outDir "$(TS_BUILD_DIR)"
+	@node "$(TS_BUILD_DIR)/hash-map/tests/hash-map.test.js"
+
+hash-map-test-go: doctor
+	@mkdir -p "$(ROOT)/.build/go-cache" "$(ROOT)/.build/go-tmp"
+	@GOCACHE="$(ROOT)/.build/go-cache" GOTMPDIR="$(ROOT)/.build/go-tmp" go test ./data-structures/hash-map/tests -v
+
+hash-map-test-java: doctor
+	@mkdir -p "$(JAVA_BUILD_DIR)"
+	@javac -d "$(JAVA_BUILD_DIR)" $$(find data-structures/hash-map -name '*.java' | sort)
+	@java -cp "$(JAVA_BUILD_DIR)" MyHashMapTest
+
+tree-status:
+	@sed -n '1,220p' data-structures/journey.md
+	@printf "\n"
+	@sed -n '1,220p' data-structures/tree/IMPLEMENTATION_CHECKLIST.md
+
+tree-problems:
+	@sed -n '1,220p' data-structures/tree/problems/selected-problems.md
+
+tree-test: tree-test-ts tree-test-go tree-test-java
+
+tree-test-ts: doctor
+	@mkdir -p "$(TS_BUILD_DIR)"
+	@"$(TSC)" --project "$(TS_CONFIG)" --outDir "$(TS_BUILD_DIR)"
+	@node "$(TS_BUILD_DIR)/tree/tests/binary-search-tree.test.js"
+
+tree-test-go: doctor
+	@mkdir -p "$(ROOT)/.build/go-cache" "$(ROOT)/.build/go-tmp"
+	@GOCACHE="$(ROOT)/.build/go-cache" GOTMPDIR="$(ROOT)/.build/go-tmp" go test ./data-structures/tree/tests -v
+
+tree-test-java: doctor
+	@mkdir -p "$(JAVA_BUILD_DIR)"
+	@javac -d "$(JAVA_BUILD_DIR)" $$(find data-structures/tree -name '*.java' | sort)
+	@java -cp "$(JAVA_BUILD_DIR)" MyBinarySearchTreeTest
+
+heap-status:
+	@sed -n '1,220p' data-structures/journey.md
+	@printf "\n"
+	@sed -n '1,220p' data-structures/heap/IMPLEMENTATION_CHECKLIST.md
+
+heap-problems:
+	@sed -n '1,220p' data-structures/heap/problems/selected-problems.md
+
+heap-test: heap-test-ts heap-test-go heap-test-java
+
+heap-test-ts: doctor
+	@mkdir -p "$(TS_BUILD_DIR)"
+	@"$(TSC)" --project "$(TS_CONFIG)" --outDir "$(TS_BUILD_DIR)"
+	@node "$(TS_BUILD_DIR)/heap/tests/binary-min-heap.test.js"
+
+heap-test-go: doctor
+	@mkdir -p "$(ROOT)/.build/go-cache" "$(ROOT)/.build/go-tmp"
+	@GOCACHE="$(ROOT)/.build/go-cache" GOTMPDIR="$(ROOT)/.build/go-tmp" go test ./data-structures/heap/tests -v
+
+heap-test-java: doctor
+	@mkdir -p "$(JAVA_BUILD_DIR)"
+	@javac -d "$(JAVA_BUILD_DIR)" $$(find data-structures/heap -name '*.java' | sort)
+	@java -cp "$(JAVA_BUILD_DIR)" MyBinaryMinHeapTest
+
+graph-status:
+	@sed -n '1,220p' data-structures/journey.md
+	@printf "\n"
+	@sed -n '1,220p' data-structures/graph/IMPLEMENTATION_CHECKLIST.md
+
+graph-problems:
+	@sed -n '1,220p' data-structures/graph/problems/selected-problems.md
+
+graph-test: graph-test-ts graph-test-go graph-test-java
+
+graph-test-ts: doctor
+	@mkdir -p "$(TS_BUILD_DIR)"
+	@"$(TSC)" --project "$(TS_CONFIG)" --outDir "$(TS_BUILD_DIR)"
+	@node "$(TS_BUILD_DIR)/graph/tests/graph.test.js"
+
+graph-test-go: doctor
+	@mkdir -p "$(ROOT)/.build/go-cache" "$(ROOT)/.build/go-tmp"
+	@GOCACHE="$(ROOT)/.build/go-cache" GOTMPDIR="$(ROOT)/.build/go-tmp" go test ./data-structures/graph/tests -v
+
+graph-test-java: doctor
+	@mkdir -p "$(JAVA_BUILD_DIR)"
+	@javac -d "$(JAVA_BUILD_DIR)" $$(find data-structures/graph -name '*.java' | sort)
+	@java -cp "$(JAVA_BUILD_DIR)" MyGraphTest
+
+trie-status:
+	@sed -n '1,220p' data-structures/journey.md
+	@printf "\n"
+	@sed -n '1,220p' data-structures/trie/IMPLEMENTATION_CHECKLIST.md
+
+trie-problems:
+	@sed -n '1,220p' data-structures/trie/problems/selected-problems.md
+
+trie-test: trie-test-ts trie-test-go trie-test-java
+
+trie-test-ts: doctor
+	@mkdir -p "$(TS_BUILD_DIR)"
+	@"$(TSC)" --project "$(TS_CONFIG)" --outDir "$(TS_BUILD_DIR)"
+	@node "$(TS_BUILD_DIR)/trie/tests/trie.test.js"
+
+trie-test-go: doctor
+	@mkdir -p "$(ROOT)/.build/go-cache" "$(ROOT)/.build/go-tmp"
+	@GOCACHE="$(ROOT)/.build/go-cache" GOTMPDIR="$(ROOT)/.build/go-tmp" go test ./data-structures/trie/tests -v
+
+trie-test-java: doctor
+	@mkdir -p "$(JAVA_BUILD_DIR)"
+	@javac -d "$(JAVA_BUILD_DIR)" $$(find data-structures/trie -name '*.java' | sort)
+	@java -cp "$(JAVA_BUILD_DIR)" MyTrieTest
 
 list-clean:
 	@rm -rf .build

@@ -1,8 +1,8 @@
 # Stack Problems
 
 Easy:
-1. LeetCode 20: Valid Parentheses
-2. LeetCode 1047: Remove All Adjacent Duplicates In String
+1. LeetCode 20: Valid Parentheses - solved
+2. LeetCode 1047: Remove All Adjacent Duplicates In String - solved
 3. LeetCode 1441: Build an Array With Stack Operations
 4. LeetCode 682: Baseball Game
 5. LeetCode 225: Implement Stack using Queues

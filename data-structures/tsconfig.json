@@ -16,6 +16,12 @@
     "stack/**/*.ts",
     "queue/**/*.ts",
     "ring-buffer/**/*.ts",
-    "dynamic-ring-buffer/**/*.ts"
+    "dynamic-ring-buffer/**/*.ts",
+    "linked-list/**/*.ts",
+    "hash-map/**/*.ts",
+    "tree/**/*.ts",
+    "heap/**/*.ts",
+    "graph/**/*.ts",
+    "trie/**/*.ts"
   ]
 }
