@@ -80,6 +80,10 @@ export class MyQueue<T> implements Queue<T> {
     return result
   }
 
+  public size(): number {
+    return this.currentLength;
+  }
+
 
   private isFull() {
     return this.capacity() === this.length()
@@ -119,5 +123,5 @@ queue.enqueue(5);
 
 
 
-console.log("queue", queue);
+// console.log("queue", queue);
 // console.log(queue.length() === 4)
