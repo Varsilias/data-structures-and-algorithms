@@ -68,6 +68,7 @@ export class MyLinkedList<T> implements LinkedList<T> {
     if(n <= 0) {
       this.front = this.back = node;
       this.back.prev = this.front;
+      return
     };
 
     node.next = this.front
